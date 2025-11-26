@@ -52,13 +52,57 @@ Model Waveform
 <img width="706" height="167" alt="image" src="https://github.com/user-attachments/assets/bff0d8fd-d679-444e-af37-0b34585853c1" />
 
 Program
+```
+
+ac=1.12;
+Am=0.64;
+fc=64;
+fm=16;
+fs=20000;
+t=0:1/fs:2/fm;       
+wc=2*3.14*fc;        
+wm=2*3.14*fm;        
+
+e1=(Am*sin(wm*t));
+subplot(4,1,1);
+plot(t,e1);
+xtitle("Message Signal");
+xgrid();
+
+e2=(ac*sin(wc*t));
+subplot(4,1,2);
+plot(t,e2);
+title("Carrier signal");
+xgrid
+
+sbsc1=(Am/2.*cos(wc*t-wm*t))-(Am/2.*cos(wc*t+wm*t));
+sbsc2=(Am/2.*cos(wc*t-wm*t))+(Am/2.*cos(wc*t+wm*t));
+
+
+e3=(sbsc2)+(sbsc1);
+subplot(4,1,3);
+plot(t,e3);
+title("USB + LSB together => DSB-SC");
+xgrid
+
+e4=(sbsc2)-(sbsc1);
+subplot(4,1,4);
+plot(t,e4);
+title("USB - LSB => isolates one sideband → SSB-SC");
+xgrid;
+
+```
 
 OUTPUT WAVEFORM
 
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/76706ab1-73f1-4298-946d-44f36837140d" />
+
 TABULATION
 
+![WhatsApp Image 2025-11-26 at 19 33 50_3d6b35c2](https://github.com/user-attachments/assets/5a5ba2b3-fcad-4fc3-a4b7-e458e51b428d)
 
 
+![WhatsApp Image 2025-11-26 at 19 33 50_02c34c4e](https://github.com/user-attachments/assets/a336cd56-c01c-4cf6-aa13-2cef85d31a55)
 
 
 
